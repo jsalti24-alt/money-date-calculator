@@ -53,7 +53,6 @@ export default function MoneyDateCalculator() {
   const [years, setYears] = useState(40);
   const [showCouple, setShowCouple] = useState(true);
   const [showReveal, setShowReveal] = useState(true);
-  const [showRecurring, setShowRecurring] = useState(false);
   const [recurringFreq, setRecurringFreq] = useState("weekly");
 
   const effectiveAmount = showCouple ? amount * 2 : amount;
@@ -221,23 +220,6 @@ export default function MoneyDateCalculator() {
           </span>
         </div>
 
-        {/* Rate Slider */}
-        <div style={{
-          display: "flex", alignItems: "center", background: "#fff", border: "2px solid #e8e2d8",
-          borderRadius: 10, padding: "10px 14px", marginBottom: 28, gap: 10,
-        }}>
-          <span style={{ color: "#a09080", fontSize: 11, fontWeight: 600, letterSpacing: 0.5, textTransform: "uppercase", whiteSpace: "nowrap" }}>Avg return</span>
-          <input
-            type="range" min="4" max="12" step="0.5" value={rate}
-            onChange={e => setRate(parseFloat(e.target.value))}
-            style={{ flex: 1, accentColor: "#d4a054" }}
-          />
-          <span style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: 14, fontWeight: 700,
-            color: "#3a2a1e", minWidth: 40, textAlign: "right",
-          }}>{rate}%</span>
-        </div>
-
         {/* === THE PAIN === */}
         <div style={{
           background: "#fff", border: "2px solid #e8e2d8", borderRadius: 14,
@@ -306,6 +288,40 @@ export default function MoneyDateCalculator() {
               </span>
               <span style={{ color: "#a09080", fontSize: 12, marginLeft: 6 }}>your money</span>
             </div>
+          </div>
+        </div>
+
+        {/* Years Slider + Rate Slider */}
+        <div style={{ display: "flex", gap: 10, marginBottom: 28 }}>
+          <div style={{
+            flex: 1, display: "flex", alignItems: "center", background: "#fff", border: "2px solid #e8e2d8",
+            borderRadius: 10, padding: "10px 12px", gap: 8,
+          }}>
+            <span style={{ color: "#a09080", fontSize: 11, fontWeight: 600, letterSpacing: 0.5, textTransform: "uppercase", whiteSpace: "nowrap" }}>Years</span>
+            <input
+              type="range" min="5" max="50" step="1" value={years}
+              onChange={e => setYears(parseInt(e.target.value))}
+              style={{ flex: 1, accentColor: "#d4a054" }}
+            />
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 14, fontWeight: 700,
+              color: "#3a2a1e", minWidth: 24, textAlign: "right",
+            }}>{years}</span>
+          </div>
+          <div style={{
+            flex: 1, display: "flex", alignItems: "center", background: "#fff", border: "2px solid #e8e2d8",
+            borderRadius: 10, padding: "10px 12px", gap: 8,
+          }}>
+            <span style={{ color: "#a09080", fontSize: 11, fontWeight: 600, letterSpacing: 0.5, textTransform: "uppercase", whiteSpace: "nowrap" }}>Return</span>
+            <input
+              type="range" min="4" max="12" step="0.5" value={rate}
+              onChange={e => setRate(parseFloat(e.target.value))}
+              style={{ flex: 1, accentColor: "#d4a054" }}
+            />
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 14, fontWeight: 700,
+              color: "#3a2a1e", minWidth: 36, textAlign: "right",
+            }}>{rate}%</span>
           </div>
         </div>
 
@@ -378,90 +394,72 @@ export default function MoneyDateCalculator() {
           </div>
         </div>
 
-        {/* === BONUS: RECURRING (SECONDARY) === */}
+        {/* === RECURRING (VISIBLE SECTION) === */}
         <div style={{
           background: "#fff", border: "2px solid #e8e2d8", borderRadius: 14,
           padding: "20px", marginBottom: 28,
         }}>
-          <button
-            onClick={() => setShowRecurring(!showRecurring)}
-            style={{
-              background: "none", border: "none", cursor: "pointer", width: "100%",
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: 0,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <span style={{ fontSize: 16 }}>🚀</span>
-              <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: "#3a2a1e" }}>
-                Now imagine you did this every {freqLabel}...
-              </span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+            <span style={{ fontSize: 16 }}>🚀</span>
+            <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: "#3a2a1e" }}>
+              Now imagine you did this every {freqLabel}...
+            </span>
+          </div>
+
+          {/* Frequency picker */}
+          <div style={{ display: "flex", gap: 8, marginBottom: 16, justifyContent: "center" }}>
+            {[
+              { key: "daily", label: "Every day" },
+              { key: "weekly", label: "Every week" },
+              { key: "monthly", label: "Every month" },
+            ].map(f => (
+              <button
+                key={f.key}
+                onClick={() => setRecurringFreq(f.key)}
+                style={{
+                  padding: "8px 16px", borderRadius: 8, cursor: "pointer",
+                  border: recurringFreq === f.key ? "2px solid #d4a054" : "2px solid #e8e2d8",
+                  background: recurringFreq === f.key ? "#fdf6e8" : "#fff",
+                  fontSize: 12, fontWeight: 600, color: recurringFreq === f.key ? "#8a6520" : "#a09080",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Recurring result */}
+          <div style={{
+            background: "linear-gradient(135deg, #1a1612, #2c2420)",
+            borderRadius: 12, padding: "20px", textAlign: "center",
+          }}>
+            <div style={{ color: "#908070", fontSize: 12, marginBottom: 4 }}>
+              Skipping ${effectiveAmount} every {freqLabel} and investing it
             </div>
-            <span style={{
-              fontSize: 20, color: "#d4a054", transition: "transform 0.2s ease",
-              transform: showRecurring ? "rotate(180deg)" : "rotate(0)",
-              display: "inline-block",
-            }}>▾</span>
-          </button>
-
-          {showRecurring && (
-            <div style={{ marginTop: 16, animation: "fadeUp 0.3s ease" }}>
-              {/* Frequency picker */}
-              <div style={{ display: "flex", gap: 8, marginBottom: 16, justifyContent: "center" }}>
-                {[
-                  { key: "daily", label: "Every day" },
-                  { key: "weekly", label: "Every week" },
-                  { key: "monthly", label: "Every month" },
-                ].map(f => (
-                  <button
-                    key={f.key}
-                    onClick={() => setRecurringFreq(f.key)}
-                    style={{
-                      padding: "8px 16px", borderRadius: 8, cursor: "pointer",
-                      border: recurringFreq === f.key ? "2px solid #d4a054" : "2px solid #e8e2d8",
-                      background: recurringFreq === f.key ? "#fdf6e8" : "#fff",
-                      fontSize: 12, fontWeight: 600, color: recurringFreq === f.key ? "#8a6520" : "#a09080",
-                      transition: "all 0.15s ease",
-                    }}
-                  >
-                    {f.label}
-                  </button>
-                ))}
+            <div style={{
+              fontFamily: "'DM Serif Display', serif", fontSize: 42, color: "#d4a054",
+              lineHeight: 1.1, margin: "8px 0",
+            }}>
+              <AnimatedNumber value={Math.round(recurringFuture)} />
+            </div>
+            <div style={{ color: "#706050", fontSize: 12, marginBottom: 10 }}>in {years} years at {rate}%</div>
+            <div style={{ display: "flex", justifyContent: "center", gap: 16 }}>
+              <div>
+                <div style={{ color: "#706050", fontSize: 10, textTransform: "uppercase", letterSpacing: 1 }}>You'd invest</div>
+                <div style={{ color: "#f5f0e8", fontSize: 14, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>
+                  ${Math.round(recurringInvested).toLocaleString()}
+                </div>
               </div>
-
-              {/* Recurring result */}
-              <div style={{
-                background: "linear-gradient(135deg, #1a1612, #2c2420)",
-                borderRadius: 12, padding: "20px", textAlign: "center",
-              }}>
-                <div style={{ color: "#908070", fontSize: 12, marginBottom: 4 }}>
-                  Skipping ${effectiveAmount} every {freqLabel} and investing it
-                </div>
-                <div style={{
-                  fontFamily: "'DM Serif Display', serif", fontSize: 42, color: "#d4a054",
-                  lineHeight: 1.1, margin: "8px 0",
-                }}>
-                  <AnimatedNumber value={Math.round(recurringFuture)} />
-                </div>
-                <div style={{ color: "#706050", fontSize: 12, marginBottom: 10 }}>in {years} years at {rate}%</div>
-                <div style={{ display: "flex", justifyContent: "center", gap: 16 }}>
-                  <div>
-                    <div style={{ color: "#706050", fontSize: 10, textTransform: "uppercase", letterSpacing: 1 }}>You'd invest</div>
-                    <div style={{ color: "#f5f0e8", fontSize: 14, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>
-                      ${Math.round(recurringInvested).toLocaleString()}
-                    </div>
-                  </div>
-                  <div style={{ width: 1, background: "#4a3a2e" }} />
-                  <div>
-                    <div style={{ color: "#706050", fontSize: 10, textTransform: "uppercase", letterSpacing: 1 }}>Interest earned</div>
-                    <div style={{ color: "#d4a054", fontSize: 14, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>
-                      ${Math.round(recurringFuture - recurringInvested).toLocaleString()}
-                    </div>
-                  </div>
+              <div style={{ width: 1, background: "#4a3a2e" }} />
+              <div>
+                <div style={{ color: "#706050", fontSize: 10, textTransform: "uppercase", letterSpacing: 1 }}>Interest earned</div>
+                <div style={{ color: "#d4a054", fontSize: 14, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>
+                  ${Math.round(recurringFuture - recurringInvested).toLocaleString()}
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
 
         {/* CTA */}
