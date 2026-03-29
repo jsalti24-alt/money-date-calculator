@@ -235,14 +235,11 @@ export default function MoneyDateCalculator() {
               If {showCouple ? "you both" : "you"} spend it
             </span>
           </div>
-          <div style={{ textAlign: "center", marginBottom: 8 }}>
-            <div style={{
-              fontFamily: "'DM Serif Display', serif", fontSize: 42, color: "#c0392b",
-              lineHeight: 1.1, margin: "4px 0",
-            }}>
-              <AnimatedNumber value={Math.round(oneTimeFuture - effectiveAmount)} />
-            </div>
-            <div style={{ color: "#a09080", fontSize: 13, marginTop: 4 }}>in lost future earnings</div>
+          <div style={{
+            fontFamily: "'DM Serif Display', serif", fontSize: 26, color: "#c0392b",
+            fontWeight: 600, textAlign: "center", marginBottom: 8,
+          }}>
+            That&apos;s the real price
           </div>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: 14, color: "#6b5e52", lineHeight: 1.6,
@@ -250,11 +247,14 @@ export default function MoneyDateCalculator() {
           }}>
             ${effectiveAmount} spent today → gone in {showCouple ? "one evening" : "a moment"}
           </div>
-          <div style={{
-            fontFamily: "'DM Serif Display', serif", fontSize: 26, color: "#c0392b",
-            fontWeight: 600, textAlign: "center", marginTop: 12,
-          }}>
-            That&apos;s the real price
+          <div style={{ textAlign: "center", marginTop: 8 }}>
+            <div style={{
+              fontFamily: "'DM Serif Display', serif", fontSize: 42, color: "#c0392b",
+              lineHeight: 1.1, margin: "4px 0",
+            }}>
+              <AnimatedNumber value={Math.round(oneTimeFuture - effectiveAmount)} />
+            </div>
+            <div style={{ color: "#a09080", fontSize: 13, marginTop: 4 }}>in lost future earnings</div>
           </div>
         </div>
 
