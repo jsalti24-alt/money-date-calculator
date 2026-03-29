@@ -292,7 +292,7 @@ export default function MoneyDateCalculator() {
         </div>
 
         {/* Years Slider + Rate Slider */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 28 }}>
+        <div className="slider-row" style={{ display: "flex", gap: 10, marginBottom: 28 }}>
           <div style={{
             flex: 1, display: "flex", alignItems: "center", background: "#fff", border: "2px solid #e8e2d8",
             borderRadius: 10, padding: "10px 12px", gap: 8,
@@ -505,6 +505,9 @@ export default function MoneyDateCalculator() {
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type=number] { -moz-appearance: textfield; }
+        @media (max-width: 640px) {
+          .slider-row { flex-direction: column !important; }
+        }
       `}</style>
     </div>
   );
