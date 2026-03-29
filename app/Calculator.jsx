@@ -236,16 +236,16 @@ export default function MoneyDateCalculator() {
             </span>
           </div>
           <div style={{
-            fontFamily: "'DM Serif Display', serif", fontSize: 26, color: "#c0392b",
-            fontWeight: 600, textAlign: "center", marginBottom: 8,
-          }}>
-            That&apos;s the real price
-          </div>
-          <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: 14, color: "#6b5e52", lineHeight: 1.6,
-            textAlign: "center",
+            textAlign: "center", marginBottom: 8,
           }}>
             ${effectiveAmount} spent today → gone in {showCouple ? "one evening" : "a moment"}
+          </div>
+          <div style={{
+            fontFamily: "'DM Serif Display', serif", fontSize: 26, color: "#c0392b",
+            fontWeight: 600, textAlign: "center",
+          }}>
+            That&apos;s the real price
           </div>
           <div style={{ textAlign: "center", marginTop: 8 }}>
             <div style={{
