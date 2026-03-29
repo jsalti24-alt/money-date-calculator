@@ -34,7 +34,7 @@ const SCENARIOS = [
 ];
 
 function compoundOnce(principal, rate, years) {
-  return principal * Math.pow(1 + rate, years);
+  return principal * Math.pow(1 + (rate / 12), years * 12);
 }
 
 function compoundRecurring(monthlyAmount, annualRate, years) {
