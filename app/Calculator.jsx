@@ -26,11 +26,13 @@ function AnimatedNumber({ value, prefix = "$", duration = 700 }) {
 
 const SCENARIOS = [
   { emoji: "☕", label: "Morning coffee", amount: 7 },
-  { emoji: "🍕", label: "Takeout for two", amount: 45 },
+  { emoji: "🍕", label: "DoorDash order", amount: 35 },
+  { emoji: "📱", label: "Subscriptions", amount: 50 },
   { emoji: "🍷", label: "Dinner date out", amount: 90 },
   { emoji: "👟", label: "New shoes", amount: 120 },
-  { emoji: "🛍️", label: "Impulse shopping", amount: 200 },
+  { emoji: "🎮", label: "Gaming/hobby gear", amount: 150 },
   { emoji: "🏖️", label: "Weekend getaway", amount: 500 },
+  { emoji: "✈️", label: "Vacation", amount: 1000 },
 ];
 
 function compoundOnce(principal, rate, years) {
@@ -48,7 +50,7 @@ export default function MoneyDateCalculator() {
   const [amount, setAmount] = useState(90);
   const [customAmount, setCustomAmount] = useState("");
   const [isCustom, setIsCustom] = useState(false);
-  const [activeScenario, setActiveScenario] = useState(2);
+  const [activeScenario, setActiveScenario] = useState(3);
   const [rate, setRate] = useState(10);
   const [years, setYears] = useState(40);
   const [showCouple, setShowCouple] = useState(true);
@@ -153,7 +155,7 @@ export default function MoneyDateCalculator() {
           <div style={{ color: "#a09080", fontSize: 11, fontWeight: 600, letterSpacing: 1, textTransform: "uppercase", marginBottom: 10 }}>
             Today's temptation
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
             {SCENARIOS.map((s, i) => (
               <button
                 key={i}
