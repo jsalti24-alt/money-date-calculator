@@ -475,19 +475,28 @@ export default function MoneyDateCalculator() {
         {/* CTA */}
         <div style={{
           background: "#fff", border: "2px solid #e8e2d8", borderRadius: 14, padding: "24px 20px",
-          textAlign: "center",
         }}>
-          <div style={{ fontSize: 24, marginBottom: 8 }}>💛</div>
           <h3 style={{
-            fontFamily: "'DM Serif Display', serif", fontSize: 20, color: "#3a2a1e",
-            margin: "0 0 6px", fontWeight: 400,
+            fontFamily: "'DM Serif Display', serif", fontSize: 22, color: "#3a2a1e",
+            margin: "0 0 6px", fontWeight: 400, textAlign: "center",
           }}>
-            Make it a weekly habit
+            You just saw what one decision is worth
           </h3>
-          <p style={{ color: "#a09080", fontSize: 13, margin: "0 0 16px", lineHeight: 1.5 }}>
-            Join The Money Date — couples who save together, build together.
-            <br />Weekly prompts. Real conversations. Compound results.
+          <p style={{ color: "#a09080", fontSize: 14, margin: "0 0 20px", textAlign: "center", lineHeight: 1.5 }}>
+            Now imagine making that decision together — every single week
           </p>
+          <div style={{ marginBottom: 20 }}>
+            {[
+              "A new Money Date prompt every week — real questions that make the awkward money talk easy",
+              "A couples community building toward financial independence — not alone, together",
+              "Track your wins and watch your compound decisions stack up over time",
+            ].map((text, i) => (
+              <div key={i} style={{ display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" }}>
+                <span style={{ color: "#d4a054", fontSize: 18, lineHeight: 1 }}>●</span>
+                <span style={{ fontSize: 13, color: "#6b5e52", lineHeight: 1.5 }}>{text}</span>
+              </div>
+            ))}
+          </div>
           <a
             href="https://www.skool.com/jacobs-group-8596/about"
             target="_blank"
@@ -499,10 +508,13 @@ export default function MoneyDateCalculator() {
               boxSizing: "border-box",
             }}
           >
-            Join The Money Date — It&apos;s Free
+            Start Your First Money Date — It&apos;s Free
           </a>
-          <p style={{ color: "#c0b8a8", fontSize: 11, marginTop: 10 }}>
-            Free weekly prompts · Couples community · No spam, ever
+          <p style={{ color: "#c0b8a8", fontSize: 12, marginTop: 12, textAlign: "center", lineHeight: 1.4 }}>
+            For couples who give a shit about their future 🔥
+          </p>
+          <p style={{ color: "#c0b8a8", fontSize: 11, margin: "4px 0 0", textAlign: "center", lineHeight: 1.5 }}>
+            Whether you&apos;re just starting out or chasing financial independence — this is where couples who take their future seriously come together.
           </p>
         </div>
       </div>
