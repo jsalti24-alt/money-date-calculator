@@ -517,6 +517,14 @@ export default function MoneyDateCalculator() {
             Whether you&apos;re just starting out or chasing financial independence — this is where couples who take their future seriously come together.
           </p>
         </div>
+
+        {/* Disclaimer */}
+        <p style={{
+          fontSize: 10, color: "#c0b8a8", textAlign: "center", lineHeight: 1.5,
+          marginTop: 32, marginBottom: 0,
+        }}>
+          This calculator is for educational purposes only and is not financial advice. Past returns do not guarantee future results. The default 10% return is based on the historical average of the S&P 500 and may not reflect actual performance. Consult a licensed financial advisor before making investment decisions.
+        </p>
       </div>
 
       <style>{`
