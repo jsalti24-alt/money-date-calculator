@@ -254,7 +254,7 @@ export default function MoneyDateCalculator() {
             fontFamily: "'DM Serif Display', serif", fontSize: 26, color: "#c0392b",
             fontWeight: 600, textAlign: "center", marginTop: 12,
           }}>
-            That&apos;s the real price of this
+            That&apos;s the real price
           </div>
         </div>
 
