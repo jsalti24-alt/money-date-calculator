@@ -478,13 +478,19 @@ export default function MoneyDateCalculator() {
             Join The Money Date — couples who save together, build together.
             <br />Weekly prompts. Real conversations. Compound results.
           </p>
-          <button style={{
-            background: "#3a2a1e", color: "#f5f0e8", border: "none", borderRadius: 10,
-            padding: "14px 32px", fontSize: 14, fontWeight: 700, cursor: "pointer",
-            letterSpacing: 0.5, width: "100%",
-          }}>
-            Join The Money Date — It's Free
-          </button>
+          <a
+            href="https://www.skool.com/jacobs-group-8596/about"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "block", background: "#3a2a1e", color: "#f5f0e8", borderRadius: 10,
+              padding: "14px 32px", fontSize: 14, fontWeight: 700, cursor: "pointer",
+              letterSpacing: 0.5, width: "100%", textAlign: "center", textDecoration: "none",
+              boxSizing: "border-box",
+            }}
+          >
+            Join The Money Date — It&apos;s Free
+          </a>
           <p style={{ color: "#c0b8a8", fontSize: 11, marginTop: 10 }}>
             Free weekly prompts · Couples community · No spam, ever
           </p>
