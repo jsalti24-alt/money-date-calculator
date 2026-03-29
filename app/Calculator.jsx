@@ -235,18 +235,23 @@ export default function MoneyDateCalculator() {
               If {showCouple ? "you both" : "you"} spend it
             </span>
           </div>
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <div style={{
+              fontFamily: "'DM Serif Display', serif", fontSize: 42, color: "#c0392b",
+              lineHeight: 1.1, margin: "4px 0",
+            }}>
+              <AnimatedNumber value={Math.round(oneTimeFuture - effectiveAmount)} />
+            </div>
+            <div style={{ color: "#a09080", fontSize: 13, marginTop: 4 }}>in lost future earnings</div>
+          </div>
           <div style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: 16, color: "#3a2a1e", lineHeight: 1.8,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 14, color: "#6b5e52", lineHeight: 1.6,
+            textAlign: "center",
           }}>
-            <span style={{ color: "#c0392b", fontWeight: 700 }}>${effectiveAmount}</span> spent today
-            <span style={{ color: "#a09080" }}> → </span>
-            gone in {showCouple ? "one evening" : "a moment"}
-            <br />
-            <span style={{ color: "#a09080", fontSize: 13 }}>
-              Plus the <span style={{ color: "#c0392b", fontWeight: 600 }}>
-                <AnimatedNumber value={Math.round(oneTimeFuture - effectiveAmount)} />
-              </span> it would have earned you
-            </span>
+            ${effectiveAmount} spent today → gone in {showCouple ? "one evening" : "a moment"}
+          </div>
+          <div style={{ color: "#a09080", fontSize: 12, textAlign: "center", marginTop: 6 }}>
+            That&apos;s the <span style={{ color: "#c0392b", fontWeight: 600 }}>real price</span> of this purchase
           </div>
         </div>
 
@@ -266,11 +271,11 @@ export default function MoneyDateCalculator() {
             </span>
           </div>
           <div style={{ textAlign: "center" }}>
-            <div style={{ color: "#908070", fontSize: 12, marginBottom: 2 }}>
+            <div style={{ color: "#908070", fontSize: 16, marginBottom: 2 }}>
               That one ${effectiveAmount} decision becomes
             </div>
             <div style={{
-              fontFamily: "'DM Serif Display', serif", fontSize: 54, color: "#d4a054",
+              fontFamily: "'DM Serif Display', serif", fontSize: 72, color: "#d4a054",
               lineHeight: 1.1, margin: "6px 0",
               opacity: showReveal ? 1 : 0,
               transform: showReveal ? "translateY(0)" : "translateY(10px)",
