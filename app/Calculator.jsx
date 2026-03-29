@@ -250,8 +250,11 @@ export default function MoneyDateCalculator() {
           }}>
             ${effectiveAmount} spent today → gone in {showCouple ? "one evening" : "a moment"}
           </div>
-          <div style={{ color: "#a09080", fontSize: 12, textAlign: "center", marginTop: 6 }}>
-            That&apos;s the <span style={{ color: "#c0392b", fontWeight: 600 }}>real price</span> of this purchase
+          <div style={{
+            fontFamily: "'DM Serif Display', serif", fontSize: 26, color: "#c0392b",
+            fontWeight: 600, textAlign: "center", marginTop: 12,
+          }}>
+            That&apos;s the real price of this
           </div>
         </div>
 
